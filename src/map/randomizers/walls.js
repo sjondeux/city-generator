@@ -15,8 +15,6 @@ class Walls {
 
         let minPartLength = Math.floor(width / 5);
         let maxPartLength = Math.floor(width / 2);
-        let x = startX;
-        let y = startY;
         let endofWall = false;
         let partLength = 0;
         let waypoints = [{x: startX, y: startY}];
@@ -29,13 +27,6 @@ class Walls {
                 partLength = width - padding - startX;
                 endofWall = true;
             }
-            // console.log('startX', startX, 'width', width, 'padding', padding);
-            // console.log('partlength', partLength);
-
-            // breed: 33
-            // padding: 4
-            // startX: 20
-            // lengte: 16
 
             startX += partLength;
             waypoints.push({x: startX, y: startY});
@@ -47,7 +38,6 @@ class Walls {
             // Create indent
             partLength = rnd(-5, 5);
             startY = this.findEdgeCoordinateValue(startY, partLength, padding);
-            //startY = startY - partLength < padding ? startY + partLength : startY - partLength;
             waypoints.push({x: startX, y: startY});
         }
 
@@ -60,8 +50,7 @@ class Walls {
                 partLength = height - padding - startY;
                 endofWall = true;
             }
-            console.log('startY', startY, 'height', height, 'padding', padding);
-            console.log('partlength', partLength);
+
             startY += partLength;
             waypoints.push({x: startX, y: startY});
 
@@ -72,7 +61,6 @@ class Walls {
             // Create indent
             partLength = rnd(-5, 5);
             startX = this.findEdgeCoordinateValue(startX, partLength, null, width - padding);
-            //startX = startX - partLength >= width - padding ? startX + partLength : startX - partLength;
             waypoints.push({x: startX, y: startY});
         }
 
@@ -85,12 +73,6 @@ class Walls {
                 partLength = startX - padding;
                 endofWall = true;
             }
-
-            // breed: 33
-            // padding: 4
-            // startX: 10
-            // lengte: 16
-
 
             startX -= partLength;
             waypoints.push({x: startX, y: startY});
@@ -133,10 +115,7 @@ class Walls {
         waypoints.at(-1).x = waypoints[0].x;
         waypoints.at(-2).x = waypoints[0].x;
 
-        console.log(waypoints);
         this.fillGridWithWaypointData(waypoints);
-
-        console.log(this.walls);
 
         return this.walls;
     }
@@ -181,7 +160,6 @@ class Walls {
         }
 
         for (let y = start; y <= end; y++) {
-            console.log(y, x);
             this.walls[y][x] = 1;
         }
     };

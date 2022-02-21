@@ -18,17 +18,12 @@ export function generateRandomLayer(width, height, randomLow = 0, randomHigh = 0
 
     let stepSize = grid.length - 1;
 
-    // console.log('stepsize', stepSize);
-    // console.log('cellsX', cellsX, 'cellsY', cellsY);
-
     while (stepSize > 1) {
         // Square step
         for (let x = 0; x < cellsX - 1; x += stepSize) {
             for (let y = 0; y < cellsY - 1; y += stepSize) {
                 let centerX = x + stepSizeMiddle(stepSize);
                 let centerY = y + stepSizeMiddle(stepSize);
-
-//                console.log('center square', centerX, centerY);
 
                 grid[centerY][centerX] = calculateAverage([
                     grid[y][x],
@@ -38,8 +33,6 @@ export function generateRandomLayer(width, height, randomLow = 0, randomHigh = 0
                 ]);
             }
         }
-
-//        console.log('after square grid', JSON.parse(JSON.stringify(grid)));
 
         // Diamond Step
         for (let y = 0; y <= cellsY; y += stepSize / 2) {
@@ -60,23 +53,9 @@ export function generateRandomLayer(width, height, randomLow = 0, randomHigh = 0
                 let centerX = x;
                 let centerY = y;
 
-                // console.log('center diamond', centerX, centerY);
-                // console.log('found coordinates', coordinates);
-
-
                 if (centerX >= 0 && centerX <= cellsX - 1 && centerY >= 0 && centerY <= cellsY - 1) {
                     const filtered = coordinates.filter(coordinate => coordinate.x >= 0 && coordinate.x < cellsX && coordinate.y >= 0 && coordinate.y < cellsY);
                     const values = filtered.map(coordinate => grid[coordinate.y][coordinate.x]);
-
-//                    console.log('filtered', filtered);
-
-                    if (isNaN(calculateAverage(values))) {
-                        console.log('grid', grid);
-                        console.log('stepsize', stepSize, 'x,y', x, y);
-                        console.log('coordinates', coordinates);
-                        console.log('values', values);
-                        ompie();
-                    }
 
                     if (filtered.length > 2) {
                         grid[centerY][centerX] = calculateAverage(values);
@@ -85,8 +64,6 @@ export function generateRandomLayer(width, height, randomLow = 0, randomHigh = 0
 
             }
         }
-
-//        console.log('after diamond grid', JSON.parse(JSON.stringify(grid)));
 
         stepSize = Math.floor(stepSize / 2);
     }

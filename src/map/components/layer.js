@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import Row from './row';
 
 class Layer extends React.Component {
-    static propTypes = {};
-
-
+    static propTypes = {
+        data: PropTypes.array.isRequired,
+    };
 
     render() {
         const {data} = this.props;

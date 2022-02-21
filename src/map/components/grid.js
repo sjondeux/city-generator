@@ -6,8 +6,11 @@ import {regenerateMap} from '../store/actions';
 
 class Grid extends React.Component {
     static propTypes = {
-        width: PropTypes.number.isRequired,
-        height: PropTypes.number.isRequired,
+        minRandom: PropTypes.number.isRequired,
+        maxRandom: PropTypes.number.isRequired,
+        terrain: PropTypes.array.isRequired,
+        walls: PropTypes.array.isRequired,
+        regenerateMap: PropTypes.func.isRequired,
     };
 
     constructor(props) {

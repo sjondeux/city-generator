@@ -4,7 +4,13 @@ import PropTypes from 'prop-types';
 import {regenerateMap, updateMaxRandom, updateMinRandom} from '../../store/actions';
 
 class Controls extends React.Component {
-    static propTypes = {};
+    static propTypes = {
+        minRandom: PropTypes.number.isRequired,
+        maxRandom: PropTypes.number.isRequired,
+        updateMinRandom: PropTypes.func.isRequired,
+        updateMaxRandom: PropTypes.func.isRequired,
+        regenerateMap: PropTypes.func.isRequired,
+    };
 
     updateMin = event => {
         const {target: {value}} = event;

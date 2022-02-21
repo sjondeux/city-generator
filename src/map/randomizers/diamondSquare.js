@@ -63,16 +63,6 @@ class diamondSquare {
                         const filtered = coordinates.filter(coordinate => coordinate.x >= 0 && coordinate.x < cellsX && coordinate.y >= 0 && coordinate.y < cellsY);
                         const values = filtered.map(coordinate => this.grid[coordinate.y][coordinate.x]);
 
-
-                        if (isNaN(this.calculateAverage(values))) {
-                            console.log('grid', this.grid);
-                            console.log('stepsize', stepSize, 'x,y', x, y);
-                            console.log('coordinates', coordinates);
-                            console.log('values', values);
-
-                            throw new Error('Illegal coordinate');
-                        }
-
                         if (filtered.length > 2) {
                             this.grid[centerY][centerX] = this.calculateAverage(values);
                         }
@@ -93,7 +83,7 @@ class diamondSquare {
         this.grid[y][x] = Math.floor(Math.random() * 99) + 1;
     }
 
-    calculateAverage = (values) => {
+    calculateAverage = values => {
         const valueSum = values.reduce((value, sum) => sum + value, 0);
         const random =  Math.floor(Math.random() * (this.maxRandom + Math.abs(this.minRandom)) + this.minRandom);
 

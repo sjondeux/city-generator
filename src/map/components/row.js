@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import Cell from './cell';
 
 class Row extends React.Component {
-    static propTypes = {};
+    static propTypes = {
+        row: PropTypes.array.isRequired,
+    };
 
     render() {
         const {row} = this.props;

@@ -7,6 +7,8 @@ import {connect} from 'react-redux';
 class Generator extends React.Component {
     static propTypes = {
         size: PropTypes.number.isRequired,
+        updateMinRandom: PropTypes.func.isRequired,
+        updateMaxRandom: PropTypes.func.isRequired,
     };
 
     render() {
